@@ -15138,6 +15138,31 @@ const struct wiphy_vendor_command hdd_wiphy_vendor_commands[] =
 				 WIPHY_VENDOR_CMD_NEED_RUNNING,
 		.doit = wlan_hdd_cfg80211_ll_stats_ext_set_param
 	},
+	{
+		.info.vendor_id = QCA_NL80211_VENDOR_ID,
+		.info.subcmd = QCA_NL80211_VENDOR_SUBCMD_PEER_FLUSH_PENDING,
+		.flags = WIPHY_VENDOR_CMD_NEED_WDEV |
+				 WIPHY_VENDOR_CMD_NEED_NETDEV |
+				 WIPHY_VENDOR_CMD_NEED_RUNNING,
+		.doit = wlan_hdd_cfg80211_peer_flush_pending
+	},
+#ifdef FEATURE_WLAN_THERMAL_SHUTDOWN
+	{
+		.info.vendor_id = QCA_NL80211_VENDOR_ID,
+		.info.subcmd = QCA_NL80211_VENDOR_SUBCMD_THERMAL_CMD,
+		.flags = WIPHY_VENDOR_CMD_NEED_WDEV |
+			WIPHY_VENDOR_CMD_NEED_NETDEV,
+		.doit = wlan_hdd_cfg80211_thermal_cmd
+	},
+#endif /* FEATURE_WLAN_THERMAL_SHUTDOWN */
+        {
+                .info.vendor_id = QCA_NL80211_VENDOR_ID,
+                .info.subcmd = QCA_NL80211_VENDOR_SUBCMD_PEER_CFR_CAPTURE_CFG,
+                .flags = WIPHY_VENDOR_CMD_NEED_WDEV |
+                         WIPHY_VENDOR_CMD_NEED_NETDEV |
+                         WIPHY_VENDOR_CMD_NEED_RUNNING,
+                .doit = wlan_hdd_cfr_capture_cfg_handler,
+        },
 };
 
 /*
